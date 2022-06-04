@@ -27,7 +27,7 @@ public:
         }
         return true;
     }
-
+    //1st mwthod
     void nQueen(vector<vector<int>> &pos,int row,int n){
         if(row==n){
             pos[n][0]++;
@@ -45,6 +45,27 @@ public:
         vector<vector<int>> pos(n+1,vector<int>(n,0));
         nQueen(pos,0,n);
         int ans=pos[n][0];
+        return ans;
+    }
+    
+    //2nd method
+    void nQueen(vector<vector<int>> pos,int row,int n,int *a){
+        if(row==n){
+            *a=*a+1;
+            return;
+        }
+        for(int col=0;col<n;col++){
+            if(isSafe(pos,row,col,n)){
+                pos[row][col]=1;
+                nQueen(pos,row+1,n,a);
+                pos[row][col]=0;
+            }
+        }
+    }
+    int totalNQueens(int n) {
+        int ans=0;
+        vector<vector<int>> pos(n,vector<int>(n,0));
+        nQueen(pos,0,n,&ans);
         return ans;
     }
 };
