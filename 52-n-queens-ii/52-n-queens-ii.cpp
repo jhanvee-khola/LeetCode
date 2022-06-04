@@ -28,23 +28,23 @@ public:
         return true;
     }
 
-    void nQueen(vector<vector<int>> pos,int row,int n,int *a){
+    void nQueen(vector<vector<int>> &pos,int row,int n){
         if(row==n){
-            *a=*a+1;
+            pos[n][0]++;
             return;
         }
         for(int col=0;col<n;col++){
             if(isSafe(pos,row,col,n)){
                 pos[row][col]=1;
-                nQueen(pos,row+1,n,a);
+                nQueen(pos,row+1,n);
                 pos[row][col]=0;
             }
         }
     }
     int totalNQueens(int n) {
-        int ans=0;
-        vector<vector<int>> pos(n,vector<int>(n,0));
-        nQueen(pos,0,n,&ans);
+        vector<vector<int>> pos(n+1,vector<int>(n,0));
+        nQueen(pos,0,n);
+        int ans=pos[n][0];
         return ans;
     }
 };
