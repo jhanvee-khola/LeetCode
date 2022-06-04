@@ -17,36 +17,37 @@ public:
         if(list2==NULL){
             return list1;
         }
-        ListNode *ans,*tans;
-        if(list1->val<list2->val){
-            tans=list1;
+        ListNode *ans;
+        if(list1->val<=list2->val){
+            ans=list1;
             list1=list1->next;
         }
         else{
-            tans=list2;
-            list2=list2->next; 
+            ans=list2;
+            list2=list2->next;
         }
-        ans=tans;
+        ListNode *temp=ans;
         while(list1!=NULL && list2!=NULL){
-            if(list1->val<list2->val){
-                tans->next=list1;
+            if(list1->val<=list2->val){
+                temp->next=list1;
                 list1=list1->next;
+                temp=temp->next;
             }
             else{
-                tans->next=list2;
-                list2=list2->next; 
+                temp->next=list2;
+                list2=list2->next;
+                temp=temp->next;
             }
-            tans=tans->next;
-        }
-        while(list1!=NULL){
-            tans->next=list1;
-            list1=list1->next;
-            tans=tans->next;
         }
         while(list2!=NULL){
-            tans->next=list2;
+            temp->next=list2;
             list2=list2->next;
-            tans=tans->next;
+            temp=temp->next;
+        }
+        while(list1!=NULL){
+            temp->next=list1;
+            list1=list1->next;
+            temp=temp->next;
         }
         return ans;
     }
