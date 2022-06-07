@@ -1,19 +1,14 @@
 class Solution {
 public:
     int findCenter(vector<vector<int>>& edges) {
-        int n=edges.size()+1;
-        vector<int> ans(n+1,0);
-        for(int i=0;i<edges.size();i++){
-            ans[edges[i][0]]++;
-            ans[edges[i][1]]++;
+        int a=edges[0][0],b=edges[0][1],c=edges[1][0],d=edges[1][1];
+        int ans;
+        if(a==c || a==d){
+            ans=a;
         }
-        int t;
-        for(int i=0;i<ans.size();i++){
-            if(ans[i]==n-1){
-                t=i;
-                break;
-            }
+        if(b==c || b==d){
+            ans=b;
         }
-        return t;
+        return ans;
     }
 };
