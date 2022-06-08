@@ -5,8 +5,11 @@ public:
         dp[0]=dp[1]=1;
         for(int i=2;i<=n;i++){
             int t=0;
-            for(int j=0;j<i;j++){
-                t+=dp[j]*dp[i-1-j];
+            for(int j=0;j<i/2;j++){
+                t+=2*dp[j]*dp[i-1-j];
+            }
+            if(i%2!=0){
+                t+=dp[i/2]*dp[i/2];
             }
             dp[i]=t;
         }
