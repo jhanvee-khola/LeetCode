@@ -1,7 +1,6 @@
 class StockSpanner {
 public:
     vector<int> price;
-    vector<int> prefix;
     StockSpanner() {
         
     }
