@@ -9,25 +9,22 @@
  */
 class Solution {
 public:
-    bool found(TreeNode* root,TreeNode* p){
-        if(!root){
-            return false;
-        }
-        if(root==p){
-            return true;
-        }
-        return found(root->left,p)||found(root->right,p);
-    }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root){
+            return NULL;
+        }
         if(root==p || root==q){
             return root;
         }
-        if((found(root->left,p) && found(root->right,q)) || (found(root->right,p) && found(root->left,q))){
+        TreeNode *l=lowestCommonAncestor(root->left,p,q);
+        TreeNode *r=lowestCommonAncestor(root->right,p,q);
+        
+        if(l && r){
             return root;
         }
-        if(found(root->left,p) && found(root->left,q)){
-            return lowestCommonAncestor(root->left,p,q);
+        if(l){
+            return l;
         }
-        return lowestCommonAncestor(root->right,p,q);
+        return r;
     }
 };
