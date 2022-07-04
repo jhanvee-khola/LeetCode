@@ -33,5 +33,4 @@ public:
         pair<int,bool> ans=Balanced(root);
         return ans.second;
     }
-    
 };
