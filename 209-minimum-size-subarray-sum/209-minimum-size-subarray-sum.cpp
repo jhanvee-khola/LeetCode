@@ -1,15 +1,15 @@
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
-        int csum=0,minl=INT_MAX,start=0;
+        int start=0,ans=INT_MAX,wsum=0;
         for(int end=0;end<nums.size();end++){
-            csum+=nums[end];
-            while(csum>=target){
-                minl=min(minl,end-start+1);
-                csum-=nums[start];
+            wsum+=nums[end];
+            while(wsum>=target){
+                ans=min(ans,end-start+1);
+                wsum-=nums[start];
                 start++;
             }
         }
-        return minl==INT_MAX ? 0:minl;
+        return ans==INT_MAX?0:ans;
     }
 };
