@@ -11,18 +11,24 @@
  */
 class Solution {
 public:
-    int isGood(TreeNode* root,int maxi){
+    int cnt=0;
+    void good(TreeNode *root,int maxi){
+        if(!root){
+            return;
+        }
+        maxi=max(maxi,root->val);
+        if(root->val==maxi){
+            cnt++;
+        }
+        good(root->left,maxi);
+        good(root->right,maxi);
+    }
+    int goodNodes(TreeNode* root) {
         if(!root){
             return 0;
         }
-        maxi=max(maxi,root->val);
-        if(root->val>=maxi){
-            return 1+isGood(root->left,maxi)+isGood(root->right,maxi);
-        }
-        return isGood(root->left,maxi)+isGood(root->right,maxi);
-    }
-    int goodNodes(TreeNode* root) {
-        int r=root->val;
-        return isGood(root,r);
+        int maxi=INT_MIN;
+        good(root,maxi);
+        return cnt;
     }
 };
