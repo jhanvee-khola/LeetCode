@@ -9,6 +9,7 @@ using namespace std;
 
 class Solution{
    public:
+//1st Method
     int findSum(int a[], int n){
         int mini,maxi,i;
         if(n%2==0){
@@ -42,7 +43,38 @@ class Solution{
         int ans=mini+maxi;
         return ans;
     }
-
+//2nd Method
+    pair<int,int> minMax(int a[],int start,int end){
+    	if(start==end){
+	    return {a[start],a[end]};
+	}
+	if(start+1==end){
+	    int mini=min(a[start],a[end]);
+	    int maxi=max(a[start],a[end]);
+	    return {mini,maxi};
+	}
+	int mid=(start+end)/2;
+	pair<int,int> mml=minMax(a,start,mid);
+	pair<int,int> mmr=minMax(a,mid+1,end);
+	pair<int,int> ans;
+	if(mml.first<mmr.first){
+	    ans.first=mml.first;
+	}
+	else{
+	    ans.first=mmr.first;
+	}
+	if(mml.second>mmr.second){
+	    ans.second=mml.second;
+	}
+	else{
+	    ans.second=mmr.second;
+	}
+	return ans;
+    }
+    int findSum2(int a[],int n){
+    	pair<int,int> mm=minMax(a,0,n-1);
+	return mm.first+mm.second;
+    }
 };
 
 //{ Driver Code Starts.
