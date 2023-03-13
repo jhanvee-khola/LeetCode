@@ -10,7 +10,7 @@ int main(){
   }
   int zero=0,one=0,two=0,ans=0;
   map<pair<int,int>,int> diff;
-  diff[{0,0},-1];
+  diff[{0,0}]=-1;
   for(int i=0;i<n;i++){
     if(a[i]==0){
       zero++;
