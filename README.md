@@ -1,2 +1,2 @@
 # LeetCode
-Collection of LeetCode questions I solved to ace the coding interview!
+Collection of LeetCode and GFG questions solved.
