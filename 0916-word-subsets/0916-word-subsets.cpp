@@ -3,10 +3,7 @@ public:
     vector<string> wordSubsets(vector<string>& w1, vector<string>& w2) {
         vector<string> ans;
         unordered_map<char,int> b;
-        for(auto c:w2[0]){
-            b[c]++;
-        }
-        for(int i=1;i<w2.size();i++){
+        for(int i=0;i<w2.size();i++){
             string s=w2[i];
             unordered_map<char,int> temp;
             for(auto c:s){
